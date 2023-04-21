@@ -79,7 +79,6 @@ if __name__=="__main__":
     parser.add_argument("--epochs", type=int, default=10)
     parser.add_argument("--debug", action="store_true")
     parser.add_argument("--name", type=str, default="fasttext")
-    parser.add_argument("--pickle_path", type=str, default="data/text8.pickle")
     parser.add_argument("--wandb", action="store_true")
     args = parser.parse_args()
     vocab = Vocab.from_file(args.vocab)
