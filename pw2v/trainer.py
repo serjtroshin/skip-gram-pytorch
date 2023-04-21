@@ -36,7 +36,7 @@ class Trainer:
                 negs = negs.to(self.model.device)
 
                 self.optimizer.zero_grad()
-                loss = self.model(left, right, negs, 16)
+                loss = self.model(left, right, negs)
                 loss.backward()
                 self.optimizer.step()
 
