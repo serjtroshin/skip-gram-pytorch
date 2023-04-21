@@ -73,7 +73,7 @@ if __name__=="__main__":
     parser.add_argument("--vocab", type=str, default="data/text8.vocab")
     parser.add_argument("--window_size", type=int, default=5)
     parser.add_argument("--n_negatives", type=int, default=5)
-    parser.add_argument("--batch_size", type=int, default=128)
+    parser.add_argument("--batch_size", type=int, default=1024)
     parser.add_argument("--embedding_dim", type=int, default=50)
     parser.add_argument("--lr", type=float, default=100.0)
     parser.add_argument("--epochs", type=int, default=10)
@@ -88,7 +88,7 @@ if __name__=="__main__":
 
     optimizer = torch.optim.SGD(model.parameters(), lr=args.lr)
     dataset = WordDataset(args.file, args.vocab, args.window_size, debug=args.debug, n_negatives=args.n_negatives)
-    cpus_available = torch.get_num_threads()
+    cpus_available = 1 # torch.get_num_threads()
     print(f"Using {cpus_available} workers")
     dataloader = DataLoader(dataset, batch_size=args.batch_size, shuffle=True, num_workers=cpus_available)
 

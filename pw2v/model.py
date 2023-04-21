@@ -88,7 +88,7 @@ LOSSES = {
 }
 
 class FastText(nn.Module):
-    def __init__(self, vocab_size, embedding_dim, similarity:Similarity=DotProduct(), loss:Loss=NegativeSamplingLoss()):
+    def __init__(self, vocab_size, embedding_dim, similarity:Similarity=DotProduct(), loss:Loss=MaxMargin()):
         super().__init__()
         self.src = nn.Embedding(vocab_size, embedding_dim, sparse=True)   
         self.tgt = nn.Embedding(vocab_size, embedding_dim, sparse=True)

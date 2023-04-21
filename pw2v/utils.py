@@ -17,7 +17,11 @@ def probability_of_keeping_word(freq: float):
     return p
 
 
-def print_nearest(vocab, embeddings, word, k=10):
+def get_nearest(vocab, embeddings, word, k=10):
+    """
+    Returns:
+        topv, topk
+    """
     # normalize embeddings
     embeddings = embeddings / embeddings.norm(dim=1, keepdim=True)
     word2idx = {word: idx for idx, word in enumerate(vocab)}
@@ -26,6 +30,10 @@ def print_nearest(vocab, embeddings, word, k=10):
     # normalize
     similarities = torch.matmul(embeddings, word_embedding)
     topv, topk = torch.topk(similarities, k)
+    return topv, topk
+
+def print_nearest(vocab, embeddings, word, k=10):
+    topv, topk = get_nearest(vocab, embeddings, word, k)
     for idx, v in zip(topk, topv):
         print(vocab[idx.item()], v.item())
 
