@@ -75,7 +75,7 @@ if __name__=="__main__":
     parser.add_argument("--n_negatives", type=int, default=5)
     parser.add_argument("--batch_size", type=int, default=128)
     parser.add_argument("--embedding_dim", type=int, default=50)
-    parser.add_argument("--lr", type=float, default=1.0)
+    parser.add_argument("--lr", type=float, default=100.0)
     parser.add_argument("--epochs", type=int, default=10)
     parser.add_argument("--debug", action="store_true")
     parser.add_argument("--name", type=str, default="fasttext")
